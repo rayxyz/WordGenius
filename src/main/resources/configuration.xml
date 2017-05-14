@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--     <typeAliases>  -->
+<!--         <typeAlias alias="User" type="com.yuanxin.yop.model.User"/>  -->
+<!--     </typeAliases>  -->
+    
+    <!--
+    <mappers>
+        <mapper resource="com/yuanxin/yop/mapper/User.xml"/>
+    </mappers>
+    -->
+    
+    <properties>  
+    	<!-- Mysql -->
+        <property name="dialect" value="mysql" />  
+        <!-- Other dbs -->
+    </properties>  
+    <settings>  
+        <setting name="logImpl" value="LOG4J" />    
+    </settings>  
+    
+<!--     <mappers> -->
+<!-- 	    <package name="com.wordgen.dao"/> -->
+<!-- 	</mappers> -->
+</configuration>

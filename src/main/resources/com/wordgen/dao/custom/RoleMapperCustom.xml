@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wordgen.dao.custom.RoleMapperCustom">
+  <resultMap id="BaseResultMap" type="com.wordgen.appobj.RoleAO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="desc" jdbcType="VARCHAR" property="desc" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+  </resultMap>
+  
+  <select id="selectList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select t.* from t_role t
+  </select>
+  
+  <select id="countList" parameterType="java.util.Map" resultType="int">
+    select count(*) from t_role
+  </select>
+  
+</mapper>

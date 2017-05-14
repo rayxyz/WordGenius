@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wordgen.dao.custom.UserMapperCustom">
+  <resultMap id="BaseResultMap" type="com.wordgen.appobj.UserAO">
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="date_of_birth" jdbcType="TIMESTAMP" property="dateOfBirth" />
+    <result column="gender" jdbcType="VARCHAR" property="gender" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="valid" jdbcType="TINYINT" property="valid" />
+    <result column="creator_id" jdbcType="BIGINT" property="creatorId" />
+  </resultMap>
+  
+  <select id="selectList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+		t.*, a.`name` roleName
+	from
+		t_user t
+	left join t_role a on t.role_id = a.id
+	where
+		1 = 1
+	and t.valid = true;
+  </select>
+  
+  <select id="countList" parameterType="java.util.Map" resultType="int">
+    select count(*) from t_user t where 1=1 and t.valid = true
+  </select>
+  
+</mapper>

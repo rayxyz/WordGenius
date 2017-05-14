@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+  
+  <properties  resource="application.properties"/>
+  
+  <context id="mysql-tables" targetRuntime="MyBatis3">
+  
+  	<property name="mergeable" value="false"></property>
+  	
+    <!-- Delimiting SQL keywords -->
+  	<property name="autoDelimitKeywords" value="true" />
+  	
+  	<!-- Use `` for Mysql, other dbs "" -->
+    <property name="beginningDelimiter" value="`"/>
+    <property name="endingDelimiter" value="`"/>
+    
+    <!-- property list -->
+    <!--     private String modelPackage; -->
+	<!--     private String appobjPath; -->
+	<!--     private String appobjPackage; -->
+	<!--     private String appobjSuffix; -->
+	<!--     private String baseMapper; -->
+	<!--     private String baseMapperName; -->
+	<!--     private String pkType; -->
+    <plugin type="com.raywang.mybatis.generator.plugins.CustomGeneratorPlugin">
+    	<property name="modelPackage" value="com.wordgen.model.gen" />
+  		<property name="appobjPath" value="src\main\java\com\wordgen\appobj" />
+  		<property name="appobjPackage" value="com.wordgen.appobj" />
+  		<property name="appobjSuffix" value="AO" />
+  		<property name="baseMapper" value="com.wordgen.dao.BaseMapper" />
+  		<property name="baseMapperName" value="BaseMapper" />
+  		<property name="pkType" value="java.lang.String" />
+  	</plugin>
+    
+    <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+  	
+<!--   	<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin"> -->
+<!--         <property name="searchString" value="Example$" /> -->
+<!--         <property name="replaceString" value="Criteria" /> -->
+<!--     </plugin> -->
+  
+    <!-- 为了防止生成的代码中有很多注释，比较难看，加入下面的配置控制 -->
+    <commentGenerator>
+      <property name="suppressAllComments" value="true" />
+      <property name="suppressDate" value="true" />
+    </commentGenerator>
+    <!-- 注释控制完毕 -->
+  
+    <!-- 数据库连接 -->
+    <jdbcConnection driverClass="${jdbc.driver}"
+        connectionURL="${jdbc.url}"
+        userId="${jdbc.username}"
+        password="${jdbc.password}">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+    
+    <!-- 数据表对应的实体层  -->
+    <javaModelGenerator targetPackage="com.wordgen.model.gen" targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+    
+    <!-- sql mapper XML配置文件 -->
+    <sqlMapGenerator targetPackage="com.wordgen.dao.gen"  targetProject="src/main/resources">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+    
+    <!-- 在ibatis2 中是dao层，但在mybatis3中，其实就是mapper接口 -->
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.wordgen.dao.gen"  targetProject="src/main/java">
+      <property name="enableSubPackages" value="true" />
+<!--       <property name="rootInterface" value="com.wordgen.dao.BaseMapper &lt; T, E &gt;" /> -->
+    </javaClientGenerator>
+    
+    <!-- 要对那些数据表进行生成操作，必须要有一个. -->
+    <!--
+   		 The database schema - not required if your database does not use schemas, 
+   		 or if there is a default schema. The specified value can contain SQL wildcards if so desired.
+    -->
+    <table tableName="t_user" domainObjectName="User">
+<!--         <property name="rootInterface" value="com.wordgen.dao.BaseMapper &lt; UserAO, UserExample &gt;" /> -->
+        <generatedKey column="ID" sqlStatement="select uuid_short()" identity="false" />
+		<columnOverride column="ID" property="id" javaType="String" />
+		<columnOverride column="role_id" property="roleId" javaType="String" />  
+		<columnOverride column="valid" property="valid" javaType="Boolean" />	     
+    </table>
+    
+    <table tableName="t_role" domainObjectName="Role">
+        <generatedKey column="ID" sqlStatement="select uuid_short()" identity="false" />
+		<columnOverride column="ID" property="id" javaType="String" />	      
+    </table>
+    
+    <table tableName="t_module" domainObjectName="Module">
+        <generatedKey column="ID" sqlStatement="select uuid_short()" identity="false" />
+		<columnOverride column="ID" property="id" javaType="String" />	
+		<columnOverride column="state" property="state" javaType="Boolean" />	     
+    </table>
+    
+    <table tableName="t_action" domainObjectName="Action">
+        <generatedKey column="ID" sqlStatement="select uuid_short()" identity="false" />
+		<columnOverride column="ID" property="id" javaType="String" />
+		<columnOverride column="module_id" property="moduleId" javaType="String" />	     
+    	<columnOverride column="state" property="state" javaType="Boolean" />	     
+    </table>
+    
+    <table tableName="t_role_action" domainObjectName="RoleAction">
+        <generatedKey column="ID" sqlStatement="select uuid_short()" identity="false" />
+		<columnOverride column="ID" property="id" javaType="String" />
+		<columnOverride column="role_id" property="roleId" javaType="String" />	     
+    	<columnOverride column="action_id" property="actionId" javaType="String" />	     
+    </table>
+
+  </context>
+  
+</generatorConfiguration>
