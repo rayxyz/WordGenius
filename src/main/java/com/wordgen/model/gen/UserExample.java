@@ -875,6 +875,76 @@ public class UserExample {
             return (Criteria) this;
         }
 
+        public Criteria andAvartarIdIsNull() {
+            addCriterion("avartar_id is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvartarIdIsNotNull() {
+            addCriterion("avartar_id is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvartarIdEqualTo(String value) {
+            addCriterion("avartar_id =", value, "avartarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvartarIdNotEqualTo(String value) {
+            addCriterion("avartar_id <>", value, "avartarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvartarIdGreaterThan(String value) {
+            addCriterion("avartar_id >", value, "avartarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvartarIdGreaterThanOrEqualTo(String value) {
+            addCriterion("avartar_id >=", value, "avartarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvartarIdLessThan(String value) {
+            addCriterion("avartar_id <", value, "avartarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvartarIdLessThanOrEqualTo(String value) {
+            addCriterion("avartar_id <=", value, "avartarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvartarIdLike(String value) {
+            addCriterion("avartar_id like", value, "avartarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvartarIdNotLike(String value) {
+            addCriterion("avartar_id not like", value, "avartarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvartarIdIn(List<String> values) {
+            addCriterion("avartar_id in", values, "avartarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvartarIdNotIn(List<String> values) {
+            addCriterion("avartar_id not in", values, "avartarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvartarIdBetween(String value1, String value2) {
+            addCriterion("avartar_id between", value1, value2, "avartarId");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvartarIdNotBetween(String value1, String value2) {
+            addCriterion("avartar_id not between", value1, value2, "avartarId");
+            return (Criteria) this;
+        }
+
         public Criteria andDescIsNull() {
             addCriterion("`desc` is null");
             return (Criteria) this;

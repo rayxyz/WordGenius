@@ -5,6 +5,8 @@ requirejs.config({
     baseUrl: "static/js",
     paths: {
 //    	"jquery": ["lib/jquery-3.2.0.min.js"],
+    	"md5": ["lib/md5.min"],
+    	"ajaxForm": ["lib/jquery.form"],
     	"message": ["module/util/message"],
         "pager": ["module/util/pager"],
     	"role": ["module/sys/role"],
@@ -13,10 +15,11 @@ requirejs.config({
         "module_": ["module/sys/module"],
         "action": ["module/sys/action"]
     }
-//	,
-//    shim: {
+	,
+    shim: {
 //	  "bootbox": ["jquery"]
-//	}
+    	
+	}
 });
 
 //require(["bootbox"]);

@@ -28,6 +28,8 @@ public class User implements Serializable {
 
     private Long creatorId;
 
+    private String avartarId;
+
     private String desc;
 
     private static final long serialVersionUID = 1L;
@@ -126,6 +128,14 @@ public class User implements Serializable {
 
     public void setCreatorId(Long creatorId) {
         this.creatorId = creatorId;
+    }
+
+    public String getAvartarId() {
+        return avartarId;
+    }
+
+    public void setAvartarId(String avartarId) {
+        this.avartarId = avartarId;
     }
 
     public String getDesc() {

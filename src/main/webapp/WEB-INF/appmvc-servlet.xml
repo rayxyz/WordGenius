@@ -16,7 +16,9 @@
     <mvc:default-servlet-handler />
     <mvc:resources location="static/view/" mapping="static/view/**" />
 	<context:component-scan base-package="com.wordgen" />
-	<context:annotation-config />    
+	<context:annotation-config />
+	<context:property-placeholder ignore-unresolvable="true" local-override="true" location="classpath*:/application.properties" />	
+    
 	
 <!-- 	 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver"> -->
 <!--          <property name="prefix" value="static/view/"/> -->
@@ -55,6 +57,8 @@
 	    <property name="freemarkerVariables">
 	        <map>
 	            <entry key="xml_escape" value-ref="fmXmlEscape" />
+	            <!-- Custom global variables -->
+	            <entry key="fileserver" value="${fileserver}" />
 	        </map>
 	    </property>
 	</bean>
